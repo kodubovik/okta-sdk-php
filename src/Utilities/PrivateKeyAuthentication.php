@@ -110,7 +110,7 @@ class PrivateKeyAuthentication {
             'grant_type' => 'client_credentials',
             'scope' => $this->scopes,
             'client_assertion_type' => 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-            'client_assertion' => (string)$clientAssertion
+            'client_assertion' => $clientAssertion->toString()
         ]);
         curl_setopt($curl,CURLOPT_URL, $this->orgUrl . '/oauth2/v1/token?'.$query);
         curl_setopt($curl,CURLOPT_POST, true);
